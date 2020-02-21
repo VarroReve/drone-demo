@@ -14,6 +14,22 @@ steps:
       repo: sakyavarro/blog
       tags: latest
 
+  - name: deploy
+    image: bitsbeats/drone-helm3
+    settings:
+      kube_api_server:
+        from_secret: api_server
+      kube_token:
+        from_secret: kubernetes_token
+      kube_certificate:
+        from_secret: ca
+      namespace: varroreve
+      chart: ./helm
+      release: blog-staging
+      wait: true
+      force: true
+
+
 #  - name: dingtalk
 #    image: lddsb/drone-dingtalk-message
 #    settings:

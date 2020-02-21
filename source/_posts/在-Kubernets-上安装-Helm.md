@@ -26,8 +26,8 @@ $ ./get_helm.sh
 ### 赋予 tiller 权限
 
 ```bash
-$ kubectl create serviceaccount --namespace kube-system tiller
-$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+$ kubectl create serviceaccount --namespace kube-system helm
+$ kubectl create clusterrolebinding helm-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:helm
 ```
 
 ### 初始化 helm
@@ -72,3 +72,5 @@ $ helm repo update
 # 安装一个 chart (以 drone 为例)
 $ helm install stable/drone
 ```
+
+kubectl get secret helm-token-mz4hn -o jsonpath={.data.ca\\.crt} -n kube-system
