@@ -21,7 +21,7 @@ steps:
       kube_token:
         from_secret: kubernetes_token
       kube_certificate:
-        from_secret: ca
+        from_secret: kubernetes_ca
       namespace: varroreve
       chart: ./helm
       release: blog-staging

@@ -26,8 +26,8 @@ $ ./get_helm.sh
 ### 赋予 tiller 权限
 
 ```bash
-$ kubectl create serviceaccount --namespace kube-system helm
-$ kubectl create clusterrolebinding helm-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:helm
+$ kubectl create serviceaccount --namespace varroreve deployer
+$ kubectl create clusterrolebinding deployer-cluster-rule --clusterrole=cluster-admin --serviceaccount=varroreve:deployer
 ```
 
 ### 初始化 helm
