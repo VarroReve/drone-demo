@@ -32,6 +32,8 @@ steps:
 
   - name: deploy
     image: bitsbeats/drone-helm3
+    commands:
+      - cat /root/.kube/config
     settings:
       kube_api_server: http://kuboard.varro.buzz/k8s-api
       kube_token:
