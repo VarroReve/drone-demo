@@ -1,49 +1,59 @@
-#---
-#kind: pipeline
-#type: kubernetes
-#name: build
-#
-#steps:
-#  - name: npm_build
-#    image: node
-#    pull: if-not-exists # always never
-#    environment:
-#      KEY: VALUE
-#    commands:
-#      #      - echo $KEY
-#      - npm install -g hexo-cli
-#      - npm install
-#      - hexo g
-#      - rm -rf node_modules
-#
-#  - name: docker_build
-#    image: plugins/docker
+---
+kind: pipeline
+type: kubernetes
+name: build
+
+steps:
+  - name: npm_build
+    image: node
+    pull: if-not-exists # always never
+    environment:
+      KEY: VALUE
+    commands:
+      #      - echo $KEY
+      - npm install -g hexo-cli
+      - npm install
+      - hexo g
+      - rm -rf node_modules
+
+  - name: docker_build
+    image: plugins/docker
+    settings:
+      username: sakyavarro
+      password: wl1122334
+      repo: sakyavarro/blog
+      tags: latest
+#      auto_tag: true
+#      build_args:
+
+  - name: deploy
+    image: busybox
+    pull: if-not-exists # always never
+    commands:
+      - curl -X DELETE \
+        -H "Content-Type: application/yaml" \
+        -H "Authorization:Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tam1jaGIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZTgwZmIzZjUtNzQxNy00YWI1LWE2NjUtNDIxYmRhOTI0ZGFjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow" \
+        "http://kuboard.varro.buzz/k8s-api/api/v1/namespaces/varroreve/pods?labelSelector=k8s.eip.work/layer%3dweb,k8s.eip.work/name%3dweb-blog"
+
+#  - name: dingtalk
+#    image: lddsb/drone-dingtalk-message
 #    settings:
-#      username: sakyavarro
-#      password: wl1122334
-#      repo: sakyavarro/blog
-#      tags: latest
-##      build_args:
-#
-##  - name: dingtalk
-##    image: lddsb/drone-dingtalk-message
-##    settings:
-##      token: 117ee9107800e43fd7ec6a2871c34a5769e5a8419e57df3d2a90cd4141117e46
-##      type: markdown
-#
-#trigger:
-#  branch:
-#    - master
-#
-#---
-pipeline:
-  deploy:
-    image: sakyavarro/blog
-    kubernetes_server: http://kuboard.varro.buzz
-    kubernetes_token: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tam1jaGIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZTgwZmIzZjUtNzQxNy00YWI1LWE2NjUtNDIxYmRhOTI0ZGFjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-    namespace: varroreve
-    deployment: web-blog
-    repo: https://hub.docker.com/r/sakyavarro/blog
-    container: sakyavarro-blog
-    tag: latest
+#      token: 117ee9107800e43fd7ec6a2871c34a5769e5a8419e57df3d2a90cd4141117e46
+#      type: markdown
+
+trigger:
+  branch:
+    - master
+
+---
+#pipeline:
+#  deploy:
+#    image: sakyavarro/blog
+#    kubernetes_server: http://kuboard.varro.buzz
+#    kubernetes_token: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tam1jaGIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZTgwZmIzZjUtNzQxNy00YWI1LWE2NjUtNDIxYmRhOTI0ZGFjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+#    namespace: varroreve
+#    deployment: web-blog
+#    repo: https://hub.docker.com/r/sakyavarro/blog
+#    container: sakyavarro-blog
+#    tag: latest
 
