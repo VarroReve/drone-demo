@@ -1,41 +1,41 @@
----
-kind: pipeline
-type: kubernetes
-name: build
-
-steps:
-  - name: npm_build
-    image: node
-    pull: if-not-exists # always never
-    environment:
-      KEY: VALUE
-    commands:
-      #      - echo $KEY
-      - npm install -g hexo-cli
-      - npm install
-      - hexo g
-      - rm -rf node_modules
-
-  - name: docker_build
-    image: plugins/docker
-    settings:
-      username: sakyavarro
-      password: wl1122334
-      repo: sakyavarro/blog
-      tags: latest
-#      build_args:
-
-#  - name: dingtalk
-#    image: lddsb/drone-dingtalk-message
+#---
+#kind: pipeline
+#type: kubernetes
+#name: build
+#
+#steps:
+#  - name: npm_build
+#    image: node
+#    pull: if-not-exists # always never
+#    environment:
+#      KEY: VALUE
+#    commands:
+#      #      - echo $KEY
+#      - npm install -g hexo-cli
+#      - npm install
+#      - hexo g
+#      - rm -rf node_modules
+#
+#  - name: docker_build
+#    image: plugins/docker
 #    settings:
-#      token: 117ee9107800e43fd7ec6a2871c34a5769e5a8419e57df3d2a90cd4141117e46
-#      type: markdown
-
-trigger:
-  branch:
-    - master
-
----
+#      username: sakyavarro
+#      password: wl1122334
+#      repo: sakyavarro/blog
+#      tags: latest
+##      build_args:
+#
+##  - name: dingtalk
+##    image: lddsb/drone-dingtalk-message
+##    settings:
+##      token: 117ee9107800e43fd7ec6a2871c34a5769e5a8419e57df3d2a90cd4141117e46
+##      type: markdown
+#
+#trigger:
+#  branch:
+#    - master
+#
+#---
 pipeline:
   deploy:
     image: sakyavarro/blog
