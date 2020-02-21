@@ -1,27 +1,28 @@
 kind: pipeline
 type: kubernets
 name: build
+
 steps:
   - name: build
-    image: golang:alpine
+    image: node
     pull: if-not-exists # always never
     environment:
       KEY: VALUE
     commands:
       - echo $KEY
-      - pwd
+      - npm install -g hexo-cli
+      - npm install
+      - hexo -v
+      - hexo -g
       - ls
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
-      - ./app
+      - ls ./public
+
   - name: dingtalk
     image: lddsb/drone-dingtalk-message
     settings:
-      token: b6975456409899e6f0e2e9f953f364ae470b9f0902f32478f04df4d726286978
+      token: 117ee9107800e43fd7ec6a2871c34a5769e5a8419e57df3d2a90cd4141117e46
       type: markdown
 
 trigger:
   branch:
     - master
-
-
-
