@@ -13,7 +13,7 @@ steps:
       - npm install -g hexo-cli
       - npm install
       - hexo -v
-      - hexo -g
+      - hexo g
       - ls
       - ls ./public
 
