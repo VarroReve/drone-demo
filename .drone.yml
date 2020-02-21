@@ -3,16 +3,16 @@ type: kubernetes
 name: build
 
 steps:
-  - name: docker_build
-    image: plugins/docker
-    settings:
-      use_cache: true
-      username:
-        from_secret: dockerhub_username
-      password:
-        from_secret: dockerhub_password
-      repo: sakyavarro/blog
-      tags: latest
+#  - name: build
+#    image: plugins/docker
+#    settings:
+#      use_cache: true
+#      username:
+#        from_secret: dockerhub_username
+#      password:
+#        from_secret: dockerhub_password
+#      repo: sakyavarro/blog
+#      tags: latest
 
   - name: deploy
     image: bitsbeats/drone-helm3
@@ -30,7 +30,7 @@ steps:
       force: true
 
 
-#  - name: dingtalk
+#  - name: notify
 #    image: lddsb/drone-dingtalk-message
 #    settings:
 #      token:
