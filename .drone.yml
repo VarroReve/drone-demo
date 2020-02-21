@@ -17,8 +17,7 @@ steps:
   - name: deploy
     image: bitsbeats/drone-helm3
     settings:
-      kube_api_server:
-        from_secret: api_server
+      kube_api_server: http://kuboard.varro.buzz/k8s-api/
       kube_token:
         from_secret: kubernetes_token
       kube_certificate:
