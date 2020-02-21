@@ -36,8 +36,7 @@ steps:
       - cat /root/.kube/config
     settings:
       kube_api_server: http://kuboard.varro.buzz/k8s-api
-      kube_token:
-        from_secret: kube_token
+      kube_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJ2ZWxlcm8tc2VydmVyLXRva2VuLWt3cmtwIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6InZlbGVyby1zZXJ2ZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIxNmQxNTZmYi1iNWI2LTRmYmQtOTgxMi0wOWJiOTQ1MTVmOTgiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06dmVsZXJvLXNlcnZlciJ9.RovnTIBcAHfo8hwRuv8vkWydNxtQdXSKJ-F8Bgz2bftBQu3TppszLNUvJE5YXbfLhlcCh8eP_O4S0PAJ6ft3fVmvRDjuWXuLZbkaTKx_7a2ApVZD_wqHsoKPZ5fbt3Ed8SQvVhlZufiaQPFJK3oB6PcQJCIH9XRpL4EMoVF-x70b2mmXbOM2KV7fkAqaP5a4TFB4lrC1pd7VR88bi4pbae_gFPDnNkuL3QJ9JQJ-cps3YRgimqlHvlAnZsmN5jkArXZhzKjwaDc-vPOz2LzjNeLrBJQEklG7mkV351qC-2xy7lz7K750in-3BCcXAPOwxcQY9GINUMNEmBgyIU47WA
       namespace: varroreve
       chart: ./helm
       release: blog-staging
