@@ -3,17 +3,6 @@ type: kubernetes
 name: build
 
 steps:
-  - name: npm_build
-    image: node
-    pull: if-not-exists
-    environment:
-      KEY: VALUE
-    commands:
-      - npm install -g hexo-cli
-      - npm install
-      - hexo g
-      - rm -rf node_modules
-
   - name: docker_build
     image: plugins/docker
     settings:
@@ -25,12 +14,12 @@ steps:
       repo: sakyavarro/blog
       tags: latest
 
-  - name: dingtalk
-    image: lddsb/drone-dingtalk-message
-    settings:
-      token:
-        from_secret: dingtalk_token_insta_bot_drone_1
-      type: markdown
+#  - name: dingtalk
+#    image: lddsb/drone-dingtalk-message
+#    settings:
+#      token:
+#        from_secret: dingtalk_token_insta_bot_drone_1
+#      type: markdown
 
 trigger:
   branch:
