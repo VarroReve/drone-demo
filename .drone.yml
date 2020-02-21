@@ -14,33 +14,33 @@ steps:
   #      repo: sakyavarro/blog
   #      tags: latest
 
-  - name: deploy_production
-    image: pelotech/drone-helm3
-    settings:
-      namespace: varroreve
-      mode: upgrade
-      chart: ./helm
-      release: blog-staging
-      kube_api_server: http://kuboard.varro.buzz/k8s-api
-      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-      debug: true
-      skip_tls_verify: true
-    environment:
-      KUBE_API_SERVER: http://kuboard.varro.buzz/k8s-api
-      KUBE_TOKEN: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-
-
-#  - name: deploy
-#    image: bitsbeats/drone-helm3
+#  - name: deploy_production
+#    image: pelotech/drone-helm3
 #    settings:
-#      kube_api_server: http://kuboard.varro.buzz/k8s-api/
-#      kube_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tam1jaGIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZTgwZmIzZjUtNzQxNy00YWI1LWE2NjUtNDIxYmRhOTI0ZGFjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
 #      namespace: varroreve
+#      mode: upgrade
 #      chart: ./helm
 #      release: blog-staging
-#      wait: true
-#      force: true
+#      kube_api_server: http://kuboard.varro.buzz/k8s-api
+#      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
 #      debug: true
+#      skip_tls_verify: true
+#    environment:
+#      KUBE_API_SERVER: http://kuboard.varro.buzz/k8s-api
+#      KUBE_TOKEN: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+
+
+  - name: deploy
+    image: bitsbeats/drone-helm3
+    settings:
+      kube_api_server: http://kuboard.varro.buzz/k8s-api
+      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+      namespace: varroreve
+      chart: ./helm
+      release: blog-staging
+      wait: true
+      force: true
+      debug: true
 
 
 #  - name: notify
