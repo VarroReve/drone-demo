@@ -14,28 +14,28 @@ steps:
   #      repo: sakyavarro/blog
   #      tags: latest
 
-#  - name: deploy_production
-#    image: pelotech/drone-helm3
-#    settings:
-#      namespace: varroreve
-#      mode: upgrade
-#      chart: ./helm
-#      release: blog-staging
-#      kube_api_server: http://kuboard.varro.buzz/k8s-api
-#      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-#      debug: true
-#      skip_tls_verify: true
-#    environment:
-#      KUBE_API_SERVER: http://kuboard.varro.buzz/k8s-api
-#      KUBE_TOKEN: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+  #  - name: deploy_production
+  #    image: pelotech/drone-helm3
+  #    settings:
+  #      namespace: varroreve
+  #      mode: upgrade
+  #      chart: ./helm
+  #      release: blog-staging
+  #      kube_api_server: http://kuboard.varro.buzz/k8s-api
+  #      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+  #      debug: true
+  #      skip_tls_verify: true
+  #    environment:
+  #      KUBE_API_SERVER: http://kuboard.varro.buzz/k8s-api
+  #      KUBE_TOKEN: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
 
 
   - name: deploy
     image: bitsbeats/drone-helm3
     settings:
-      kube_api_server: http://kuboard.varro.buzz/k8s-api
-      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-#      kube_certificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01ERXlNVEEyTWpneU5sb1hEVE13TURFeE9EQTJNamd5Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBT0dzClVCazl2Y3FLUk81Z2Rua3B1bVpwVDBzVzRXOUppMEduL1VSUWJHMVRic3JDZkoyWTFOZTBxSFQybndhMG5JS3oKMllxOERQRkVBdVFqQTc5Mi80KysxSnlCRjhhN3QrSXFvZDRqb20rdVVObU9KUmpPeGdFbk5PallpTDB5d09yZwowRTlHMVVKWlM4NkhZMmFkVlpiWitvWWY1ZVdxbW1aeGlaTURxMnRzN3pOTVFSSmJHN2RGREUvMSt4dWw0Wm13Ckpsd2MvZDRFVjhRNktNUnlOZE43bmJpNFJ4M1czUWFVR3FIcjhXNkJmNkxndmhmZHdRa2xmTDhCVFlzMXpFZE0KUE5ucW55SWljajF2blpSVFZXY1IxMjRsTmZkcFNNczUremgyOVpBaVdBRzlXQkRreWR6cmFKNTR4bVIxMG5VUQpnZU5hdU5iRm54VUEvWE1veThjQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFIcVo4eG5yeVVObWN6YW5DN1JtNmRNYWVCVEYKc0UvWi9WRWlQcEpVSjEyU3l4cnlVSTBSd1p0cHRnVmVDTnZMRG95SHc4UGhQMkc0WGkxb1JaSWVVeVlBUlBIWgpaclErMHpRUTFWK1B3Ui9LbGgzTzJCMHNiMVFZeXRvdzhYQ0FyaTliYSttRnB5VXNwSGtFZncrUmY5TFl0L1M2ClVDQXhQdXFYNHRQVHYwRGdLSkE3cWIwbFZzdlY4Y2lBTVRoRkthSStjTHNWcGtrS2tmeXQwYzd1UDV1ODBvdncKQlE0MVRVaXl0N3FvNmtFMWpFRHhDM0RUM0JUOXUzWDI0NzJGL1hWMFpSUzc5WEhKcnp5NFNRa2hOQ3lVTGllOApBbzMraW83TkVMZldhVDNzTCtWTi9aVURRclZHeU0zNWl5NHZIbmtjN1lXVC9uTnUyN0haREV6SlZ5MD0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+      kube_api_server: https://13.52.0.105:6443
+      kube_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IldaTEdWem53VFVrMHBXOUYxT3A1WWo0S0MyOWhSUnpaa0ZPUjlXc3pCMVEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJvYXJkLXVzZXItdG9rZW4tam1jaGIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoia3Vib2FyZC11c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZTgwZmIzZjUtNzQxNy00YWI1LWE2NjUtNDIxYmRhOTI0ZGFjIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmt1Ym9hcmQtdXNlciJ9.QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+      #      kube_certificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01ERXlNVEEyTWpneU5sb1hEVE13TURFeE9EQTJNamd5Tmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBT0dzClVCazl2Y3FLUk81Z2Rua3B1bVpwVDBzVzRXOUppMEduL1VSUWJHMVRic3JDZkoyWTFOZTBxSFQybndhMG5JS3oKMllxOERQRkVBdVFqQTc5Mi80KysxSnlCRjhhN3QrSXFvZDRqb20rdVVObU9KUmpPeGdFbk5PallpTDB5d09yZwowRTlHMVVKWlM4NkhZMmFkVlpiWitvWWY1ZVdxbW1aeGlaTURxMnRzN3pOTVFSSmJHN2RGREUvMSt4dWw0Wm13Ckpsd2MvZDRFVjhRNktNUnlOZE43bmJpNFJ4M1czUWFVR3FIcjhXNkJmNkxndmhmZHdRa2xmTDhCVFlzMXpFZE0KUE5ucW55SWljajF2blpSVFZXY1IxMjRsTmZkcFNNczUremgyOVpBaVdBRzlXQkRreWR6cmFKNTR4bVIxMG5VUQpnZU5hdU5iRm54VUEvWE1veThjQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFIcVo4eG5yeVVObWN6YW5DN1JtNmRNYWVCVEYKc0UvWi9WRWlQcEpVSjEyU3l4cnlVSTBSd1p0cHRnVmVDTnZMRG95SHc4UGhQMkc0WGkxb1JaSWVVeVlBUlBIWgpaclErMHpRUTFWK1B3Ui9LbGgzTzJCMHNiMVFZeXRvdzhYQ0FyaTliYSttRnB5VXNwSGtFZncrUmY5TFl0L1M2ClVDQXhQdXFYNHRQVHYwRGdLSkE3cWIwbFZzdlY4Y2lBTVRoRkthSStjTHNWcGtrS2tmeXQwYzd1UDV1ODBvdncKQlE0MVRVaXl0N3FvNmtFMWpFRHhDM0RUM0JUOXUzWDI0NzJGL1hWMFpSUzc5WEhKcnp5NFNRa2hOQ3lVTGllOApBbzMraW83TkVMZldhVDNzTCtWTi9aVURRclZHeU0zNWl5NHZIbmtjN1lXVC9uTnUyN0haREV6SlZ5MD0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
       namespace: varroreve
       chart: ./helm
       release: blog-staging
@@ -54,3 +54,32 @@ steps:
 trigger:
   branch:
     - master
+
+
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cert-manager-test
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: test-selfsigned
+  namespace: cert-manager-test
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: selfsigned-cert
+  namespace: cert-manager-test
+spec:
+  dnsNames:
+    - example.com
+  secretName: selfsigned-cert-tls
+  issuerRef:
+    name: test-selfsigned
+
+
