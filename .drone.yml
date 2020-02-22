@@ -33,7 +33,7 @@ steps:
   - name: deploy
     image: bitsbeats/drone-helm3
     settings:
-      kube_api_server: http://kwuboard.varro.buzz/k8s-api
+      kube_api_server: http://kuboard.varro.buzz/k8s-api
       kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
       namespace: varroreve
       chart: ./helm
