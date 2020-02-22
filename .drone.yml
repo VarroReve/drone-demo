@@ -14,18 +14,6 @@ steps:
   #      repo: sakyavarro/blog
   #      tags: latest
 
-  - name: deploy
-      image: quay.io/honestbee/drone-kubernetes
-      settings:
-          image: sakyavarro/blog
-          kubernetes_server: https://172.31.24.108:6443
-          kubernetes_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-          namespace: varroreve
-          deployment: web-blog
-          repo: https://hub.docker.com/repository/docker/sakyavarro/blog
-          container: sakyavarro-blog
-          tag: latest
-
 #  - name: deploy_production
 #    image: pelotech/drone-helm3
 #    settings:
@@ -42,18 +30,18 @@ steps:
 #      KUBE_TOKEN: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
 
 
-#  - name: deploy
-#    image: bitsbeats/drone-helm3
-#    settings:
-#      kube_api_server: https://13.52.0.105:6443
-#      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
-#      kube_certificate: MIIC/zCCAeegAwIBAgIIPFYS/JFXUmkwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UEAxMKa3ViZXJuZXRlczAeFw0yMDAxMjEwNjI4MjZaFw0yMTAxMjAwNjI4MjdaMEExFzAVBgNVBAoTDnN5c3RlbTptYXN0ZXJzMSYwJAYDVQQDEx1rdWJlLWFwaXNlcnZlci1rdWJlbGV0LWNsaWVudDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL49JP9YlW7eUqBxe4wK+gY622RzT0WHT+QFj/+QuZBic0A5obLWVC0SCNtL14yT8PVnqhCLID4omKjjcDPTQQwxxOutcrdKjpTG3/CvFkLuhAal2tjpyQ8bkokBNN+rW+/JU+RQrN5CrNED2MDkaQatykWfSDKmq/HRs3LalrU6RyUWyPxQyh0yNQQVi7k0BonnrMFC99RQwupla978ce+HnMroIu+7vbGY3lDkhn1u/3lTOtnyV9prxPwU0I55t0vLIWffkhfa7TClp6N37MN1g5VUrxL86i7IjgZMncMgrKO71Vi1nvhUmASfJxGT6bqRQzj4mPgXIM/8F/PgGiECAwEAAaMnMCUwDgYDVR0PAQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4IBAQDGCqf8xx8HwOiK5XPTZ/4s0kL/NHSDVasT3QEIMUt7i1teRJvGkCbSKlt3IOzVSC4BURx3Bpf8x1PrE0jtL0UtwMrKRK4UhsgBdrb27R8CK3sAFvt7iK+/qBGqF3iamus7TpYqx6aVSTNLTgNIbTvoAvzOYZZzQwzuNBpfjhve88VtPQZUFH7k07M3Q+2ZvM3n/faO8qlSu03t0/ATSTnLAdx/BPj+vlSLKLOuJMemvEEXJUuQwn09HOkMj07eF4OpkdxaGymxuHTfU7NXwq6h08DECRzW94IhbHjQkwprF8WTpfiF1A14x6uSjcmHAODz63ZDVNWhYtVE7CvCW1on
-#      namespace: varroreve
-#      chart: ./helm
-#      release: blog-staging
-#      wait: true
-#      force: true
-#      debug: true
+  - name: deploy
+    image: bitsbeats/drone-helm3
+    settings:
+      kube_api_server: https://172.31.24.108:6443
+      kube_token: QKg95nirOm1Y8YpLmZjPM_7RZRw2WWbQq9CBrF7M4xUPhgMbNo4Inb6bBVHAzstcOiac-MaMzsejUlilt19JUVwJV3d5xP-mgcB83pXBXoRrS0BxX1133x5V4CH38zjnO_NKRsCcSCER7Oozmp2fOrmqtAcK0iZ89g7utmYlsF3h4uti356R41p-k9pzB41I8OoWtVFQNK6S8tzsMgoKhZxqZSZcCn-b3rzCvQ6T68x3f-4wC1naNRkxqLEi9dbiX3emNqrCAnxHLfE3X3RFUuMVv-yyNeM_loT5JdU_ZFwbwEHriDlw2vOusjB_3a0cvHBJCkD954QIdy0A5J6fow
+      kube_certificate: MIIC/zCCAeegAwIBAgIIPFYS/JFXUmkwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UEAxMKa3ViZXJuZXRlczAeFw0yMDAxMjEwNjI4MjZaFw0yMTAxMjAwNjI4MjdaMEExFzAVBgNVBAoTDnN5c3RlbTptYXN0ZXJzMSYwJAYDVQQDEx1rdWJlLWFwaXNlcnZlci1rdWJlbGV0LWNsaWVudDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL49JP9YlW7eUqBxe4wK+gY622RzT0WHT+QFj/+QuZBic0A5obLWVC0SCNtL14yT8PVnqhCLID4omKjjcDPTQQwxxOutcrdKjpTG3/CvFkLuhAal2tjpyQ8bkokBNN+rW+/JU+RQrN5CrNED2MDkaQatykWfSDKmq/HRs3LalrU6RyUWyPxQyh0yNQQVi7k0BonnrMFC99RQwupla978ce+HnMroIu+7vbGY3lDkhn1u/3lTOtnyV9prxPwU0I55t0vLIWffkhfa7TClp6N37MN1g5VUrxL86i7IjgZMncMgrKO71Vi1nvhUmASfJxGT6bqRQzj4mPgXIM/8F/PgGiECAwEAAaMnMCUwDgYDVR0PAQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBCwUAA4IBAQDGCqf8xx8HwOiK5XPTZ/4s0kL/NHSDVasT3QEIMUt7i1teRJvGkCbSKlt3IOzVSC4BURx3Bpf8x1PrE0jtL0UtwMrKRK4UhsgBdrb27R8CK3sAFvt7iK+/qBGqF3iamus7TpYqx6aVSTNLTgNIbTvoAvzOYZZzQwzuNBpfjhve88VtPQZUFH7k07M3Q+2ZvM3n/faO8qlSu03t0/ATSTnLAdx/BPj+vlSLKLOuJMemvEEXJUuQwn09HOkMj07eF4OpkdxaGymxuHTfU7NXwq6h08DECRzW94IhbHjQkwprF8WTpfiF1A14x6uSjcmHAODz63ZDVNWhYtVE7CvCW1on
+      namespace: varroreve
+      chart: ./helm
+      release: blog-staging
+      wait: true
+      force: true
+      debug: true
 
 #  - name: notify
 #    image: lddsb/drone-dingtalk-message
