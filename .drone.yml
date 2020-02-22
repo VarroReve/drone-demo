@@ -36,6 +36,7 @@ steps:
         wait: true
         force: true
         debug: true
+        kube_skip_tls: true
 
 #  - name: notify
 #    image: lddsb/drone-dingtalk-message
