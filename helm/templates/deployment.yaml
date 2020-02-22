@@ -13,6 +13,8 @@ spec:
   template:
     metadata:
       labels:
+        k8s.eip.work/name: {{ .Release.Name }}
+        k8s.eip.work/layer: {{ .Values.kuboardLayer }}
         app.kubernetes.io/name: {{ include "blog.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:

@@ -35,7 +35,6 @@ steps:
         release: web-blog-test
         wait: true
         force: true
-        debug: true
         kube_skip_tls: true
 
 #  - name: notify
