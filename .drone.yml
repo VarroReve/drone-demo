@@ -35,6 +35,12 @@ steps:
         from_secret: dingtalk_token_insta_bot_drone_1
       type: markdown
 
+  - name: notify2
+    image: lddsb/drone-dingtalk-message
+    settings:
+      token: 61475d3297ab163609b0154957d706de5d3de658e66226d1bd1bac4e5da86b00
+      type: markdown
+
 trigger:
   branch:
     - master
