@@ -14,21 +14,21 @@ steps:
       repo: sakyavarro/blog
       tags:
         - ${DRONE_TAG=latest}
-        - latest
+#        - latest
 
-  - name: deploy
-    image: bitsbeats/drone-helm3
-    settings:
-      kube_api_server:
-        from_secret: kube_api_server
-      kube_token:
-        from_secret: kube_token
-      namespace: varroreve
-      chart: ./helm
-      release: web-blog
-      wait: true
-      force: true
-      kube_skip_tls: true
+#  - name: deploy
+#    image: bitsbeats/drone-helm3
+#    settings:
+#      kube_api_server:
+#        from_secret: kube_api_server
+#      kube_token:
+#        from_secret: kube_token
+#      namespace: varroreve
+#      chart: ./helm
+#      release: web-blog
+#      wait: true
+#      force: true
+#      kube_skip_tls: true
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
