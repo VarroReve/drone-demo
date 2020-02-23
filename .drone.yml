@@ -12,7 +12,7 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: sakyavarro/blog
-      auto_tag: true
+      tags: ${DRONE_TAG=latest}
 
   - name: deploy
     image: bitsbeats/drone-helm3
@@ -51,9 +51,5 @@ steps:
 trigger:
   branch:
     - master
-  event:
-    - push
-    - tag
-
 
 
