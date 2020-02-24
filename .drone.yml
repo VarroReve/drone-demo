@@ -17,34 +17,20 @@ steps:
       branch:
         - master
 
-
-  - name: build_staging
-    image: plugins/docker
+  - name: deploy_prod
+    image: bitsbeats/drone-helm3
     settings:
-      use_cache: true
-      username:
-        from_secret: dockerhub_username
-      password:
-        from_secret: dockerhub_password
-      repo: sakyavarro/blog
-      tags: ${DRONE_TAG=staging-latest}
-    when:
-      branch:
-        - staging
-
-#  - name: deploy
-#    image: bitsbeats/drone-helm3
-#    settings:
-#      kube_api_server:
-#        from_secret: kube_api_server
-#      kube_token:
-#        from_secret: kube_token
-#      namespace: varroreve
-#      chart: ./helm
-#      release: web-blog
-#      wait: true
-#      force: true
-#      kube_skip_tls: true
+      kube_api_server:
+        from_secret: kube_api_server
+      kube_token:
+        from_secret: kube_token
+      namespace: production
+      chart: ./helm
+      vaules_yaml: values.prod.yaml
+      release: web-blog
+      wait: true
+      force: true
+      kube_skip_tls: true
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
@@ -66,3 +52,41 @@ steps:
 #      text: Your build is complete
 #      desp: Send by ServerChan
 
+trigger:
+  branch:
+    - master
+
+---
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+  - name: build_staging
+    image: plugins/docker
+    settings:
+      use_cache: true
+      username:
+        from_secret: dockerhub_username
+      password:
+        from_secret: dockerhub_password
+      repo: sakyavarro/blog
+      tags: ${DRONE_TAG=staging-latest}
+
+  - name: deploy
+    image: bitsbeats/drone-helm3
+    settings:
+      kube_api_server:
+        from_secret: kube_api_server
+      kube_token:
+        from_secret: kube_token
+      namespace: values.staging.yaml
+      chart: ./helm
+      release: web-blog
+      wait: true
+      force: true
+      kube_skip_tls: true
+
+trigger:
+  branch:
+    - staging

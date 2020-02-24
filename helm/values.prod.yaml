@@ -8,7 +8,7 @@ kuboardLayer: web
 
 image:
   repository: sakyavarro/blog
-  tag: latest
+  tag: prod-latest
   pullPolicy: Always
 
 imagePullSecrets: []
