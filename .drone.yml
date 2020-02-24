@@ -3,19 +3,19 @@ type: kubernetes
 name: production
 
 steps:
-  - name: build_prod
-    image: plugins/docker
-    settings:
-      use_cache: true
-      username:
-        from_secret: dockerhub_username
-      password:
-        from_secret: dockerhub_password
-      repo: sakyavarro/blog
-      tags: ${DRONE_TAG=prod-latest}
-    when:
-      branch:
-        - master
+#  - name: build_prod
+#    image: plugins/docker
+#    settings:
+#      use_cache: true
+#      username:
+#        from_secret: dockerhub_username
+#      password:
+#        from_secret: dockerhub_password
+#      repo: sakyavarro/blog
+#      tags: ${DRONE_TAG=prod-latest}
+#    when:
+#      branch:
+#        - master
 
   - name: deploy_prod
     image: bitsbeats/drone-helm3
@@ -27,11 +27,12 @@ steps:
       namespace: production
       chart: ./helm
       vaules_yaml:
-        - ./helm/values.prod.yaml
+        - values.prod.yaml
       release: web-blog
       wait: true
       force: true
       kube_skip_tls: true
+      debug: true
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
