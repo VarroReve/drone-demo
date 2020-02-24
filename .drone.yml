@@ -26,12 +26,13 @@ steps:
         from_secret: kube_token
       namespace: production
       chart: ./helm
-      vaules: values.prod.yaml
       release: web-blog
       wait: true
       force: true
       kube_skip_tls: true
       debug: true
+    environment:
+      - VAULES_YAML: values.prod.yaml
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
