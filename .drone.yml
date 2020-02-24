@@ -26,8 +26,7 @@ steps:
         from_secret: kube_token
       namespace: production
       chart: ./helm
-      vaules:
-        - values.prod.yaml
+      vaules: values.prod.yaml
       release: web-blog
       wait: true
       force: true
