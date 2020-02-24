@@ -7,4 +7,4 @@ tags:
 
 test staging
 test prod
-prod
+prod2
