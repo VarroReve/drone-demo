@@ -18,20 +18,22 @@ steps:
 #        - master
 
   - name: deploy_prod
-    image: bitsbeats/drone-helm3
+    image: pelotech/drone-helm3
     settings:
-      kube_api_server:
-        from_secret: kube_api_server
-      kube_token:
-        from_secret: kube_token
+      mode: upgrade
       namespace: production
       chart: ./helm
       release: web-blog
-      wait: true
-      force: true
-      kube_skip_tls: true
+      wait_for_upgrade: true
+      force_upgrade: true
+      skip_tls_verify: true
       debug: true
-      vaules_yaml: ./helm/values.prod.yaml
+      values_files: ["./helm/values.prod.yaml"]
+    environment:
+      KUBE_API_SERVER:
+        from_secret: kube_api_server
+      KUBE_TOKEN:
+        from_secret: kube_token
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
