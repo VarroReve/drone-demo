@@ -12,6 +12,8 @@ spec:
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
+      annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
       labels:
         k8s.eip.work/name: {{ .Release.Name }}
         k8s.eip.work/layer: {{ .Values.kuboardLayer }}
