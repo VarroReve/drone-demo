@@ -31,8 +31,7 @@ steps:
       force: true
       kube_skip_tls: true
       debug: true
-    environment:
-      VAULES_YAML: ./helm/values.prod.yaml
+      vaules_yaml: ["./helm/values.prod.yaml"]
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
