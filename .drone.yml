@@ -80,7 +80,7 @@ steps:
     image: pelotech/drone-helm3
     settings:
       mode: upgrade
-      namespace: production
+      namespace: staging
       chart: ./helm
       release: web-blog
       wait_for_upgrade: true
