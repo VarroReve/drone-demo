@@ -1,6 +1,6 @@
 kind: pipeline
 type: kubernetes
-name: default
+name: production
 
 steps:
   - name: build_prod
@@ -59,7 +59,7 @@ trigger:
 ---
 kind: pipeline
 type: kubernetes
-name: default
+name: staging
 
 steps:
   - name: build_staging
@@ -73,7 +73,7 @@ steps:
       repo: sakyavarro/blog
       tags: ${DRONE_TAG=staging-latest}
 
-  - name: deploy
+  - name: deploy_staging
     image: bitsbeats/drone-helm3
     settings:
       kube_api_server:
