@@ -47,9 +47,9 @@ ingress:
     - host: staging.varro.buzz
       paths: ["/"]
   tls:
-    - hosts:
+    - secretName: web-blog-tls-prod
+      hosts:
         - staging.varro.buzz
-      secretName: web-blog-tls-prod
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
