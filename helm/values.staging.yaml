@@ -42,9 +42,9 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     k8s.eip.work/workload: web-blog
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+#    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: staging.varro.buzz
+    - host: blog.fmootech.cn
       paths: ["/"]
   tls: []
 #    - secretName: web-blog-tls-prod
