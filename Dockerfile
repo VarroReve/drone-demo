@@ -5,7 +5,7 @@ WORKDIR /app/hexo
 COPY . /app/hexo
 
 RUN npm install -g hexo-cli && \
-    npm install && \
+    yarn && \
     hexo g
 
 FROM nginx:alpine as nginx
