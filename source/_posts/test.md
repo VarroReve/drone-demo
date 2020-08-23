@@ -8,3 +8,4 @@ tags:
 test from cluster firmoo with drone ci and fluxc cd fix
 haha
 test
+test2
