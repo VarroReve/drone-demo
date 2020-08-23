@@ -5,6 +5,8 @@ name: production
 steps:
   - name: build_prod
     image: plugins/docker
+    commands:
+      - DRONE_COMMIT_SHA_TAG="staging-${DRONE_COMMIT_SHA:0:8}"
     settings:
       use_cache: true
       username:
@@ -12,7 +14,7 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: sakyavarro/blog
-      tags: ${DRONE_TAG=prod-latest}
+      tags: ${DRONE_COMMIT_SHA_TAG}
     when:
       branch:
         - master
