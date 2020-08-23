@@ -9,3 +9,4 @@ test from cluster firmoo with drone ci and fluxc cd fix
 haha
 test
 test2
+staging merge test
