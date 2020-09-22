@@ -5,5 +5,10 @@ date: 2020-02-21 15:25:27
 tags:
 ---
 
+test from cluster firmoo with drone ci and fluxc cd fix
+haha
+test
+test2
+staging merge test
 test from cluster firmoo
 staging
