@@ -6,3 +6,4 @@ tags:
 ---
 
 test from cluster firmoo
+staging
