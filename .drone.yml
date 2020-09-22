@@ -5,6 +5,8 @@ name: production
 steps:
   - name: build_prod
     image: plugins/docker
+    commands:
+      - DRONE_COMMIT_SHA_TAG="staging-${DRONE_COMMIT_SHA:0:8}"
     settings:
       use_cache: true
       username:
@@ -12,28 +14,10 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: sakyavarro/blog
-      tags: ${DRONE_TAG=prod-latest}
+      tags: ${DRONE_COMMIT_SHA_TAG}
     when:
       branch:
         - master
-
-  - name: deploy_prod
-    image: pelotech/drone-helm3
-    settings:
-      mode: upgrade
-      namespace: production
-      chart: ./helm
-      release: web-blog
-      wait_for_upgrade: true
-      force_upgrade: true
-      skip_tls_verify: true
-      debug: true
-      values_files: ["./helm/values.prod.yaml"]
-      kube_api_server:
-        from_secret: kube_api_server
-      kube_token:
-        from_secret: kube_token
-
 
 #  - name: notify-dingtalk1
 #    image: lddsb/drone-dingtalk-message
@@ -74,25 +58,30 @@ steps:
       password:
         from_secret: dockerhub_password
       repo: sakyavarro/blog
-      tags: ${DRONE_TAG=staging-latest}
+      tags: "staging-${DRONE_COMMIT_SHA:0:8}"
 
-  - name: deploy_staging
-    image: pelotech/drone-helm3
-    settings:
-      mode: upgrade
-      namespace: staging
-      chart: ./helm
-      release: web-blog
-      wait_for_upgrade: true
-      force_upgrade: true
-      skip_tls_verify: true
-      debug: true
-      values_files: ["./helm/values.staging.yaml"]
-      kube_api_server:
-        from_secret: kube_api_server
-      kube_token:
-        from_secret: kube_token
 
 trigger:
   branch:
     - staging
+    -
+---
+kind: pipeline
+type: kubernetes
+name: test
+
+steps:
+  - name: build_test
+    image: plugins/docker
+    settings:
+      use_cache: true
+      username:
+        from_secret: dockerhub_username
+      password:
+        from_secret: dockerhub_password
+      repo: sakyavarro/blog
+      tags: test-latest
+
+trigger:
+  branch:
+    - test
